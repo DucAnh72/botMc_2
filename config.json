@@ -1,0 +1,14 @@
+{
+    "username": "bot351",
+    "host": "sgp.kingmc.vn",
+    "port": 25565,
+    "version": "1.21.1",
+    "respawn": false,
+    "registered": true,
+    "orderslot": 0,
+    "orderamount": 12000,
+    "botPassword": "12345",
+    "Idchannel":"1538159061328076830",
+    "discordOwnerId": "1431160618936832040",
+    "webhookUrl": "https://discord.com/api/webhooks/1538159089471717376/U3Xrf-yPmuWML8QrneWnFrKqewQyBspYIyIv6WObrTCRmZAkjwICSVuz-nbQYPgtZ0d_"
+}
