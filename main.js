@@ -375,7 +375,7 @@ function startOrder(slotnumber) {
         setTimeout(() => {
             if (!currentSign) {
                 console.log("[!] Không tìm thấy sign");
-                )};
+                };
                 return;
             }
 
