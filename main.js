@@ -75,7 +75,7 @@ function sendDiscordWebhook(content) {
 
     const url = new URL(cleanUrl);
     const options = {
-        hostname: url. hostname,
+        hostname: url.hostname,
         path: url.pathname + url.search,
         method: "POST",
         headers: {
@@ -137,14 +137,14 @@ function start_bot() {
         if (!startTime) startTime = Date.now();
 
         sendDiscordWebhook(
-            `🟢 **${config.username}** đã kết nối và đăng nhập thành công vào server!`,
+            `🟢 **${process.env.username}** đã kết nối và đăng nhập thành công vào server!`,
         );
 
         // Báo cáo tự động mỗi 5 phút (300000 ms)
         clearInterval(reportInterval);
         reportInterval = setInterval(() => {
             const uptime = getUptimeString();
-            const statusMsg = `📈 **[BÁO CÁO ĐỊNH KỲ]**\n👤 Bot: **${config.username}**\n⏱️ Thời gian đã treo: \`${uptime}\`\n❤️ Máu hiện tại: \`${Math.round(bot.health || 20)}\`\n🍖 Thức ăn: \`${Math.round(bot.food || 20)}\``;
+            const statusMsg = `📈 **[BÁO CÁO ĐỊNH KỲ]**\n👤 Bot: **${process.env.username}**\n⏱️ Thời gian đã treo: \`${uptime}\`\n❤️ Máu hiện tại: \`${Math.round(bot.health || 20)}\`\n🍖 Thức ăn: \`${Math.round(bot.food || 20)}\``;
             console.log(statusMsg.replace(/\*\*/g, ""));
             sendDiscordWebhook(statusMsg);
         }, 300000);
@@ -153,7 +153,7 @@ function start_bot() {
     bot.on("entityHurt", (entity) => {
         if (entity === bot.entity) {
             const uptime = getUptimeString();
-            const msg = `⚠️ **[CẢNH BÁO]** **${config.username}** đang bị tấn công hoặc nhận sát thương! (Đã treo được: \`${uptime}\`)`;
+            const msg = `⚠️ **[CẢNH BÁO]** **${process.env.username}** đang bị tấn công hoặc nhận sát thương! (Đã treo được: \`${uptime}\`)`;
             console.log(`[!] ${msg.replace(/\*\*/g, "")}`);
             sendDiscordWebhook(msg);
         }
@@ -163,7 +163,7 @@ function start_bot() {
         const uptime = getUptimeString();
         console.log("im dead");
         sendDiscordWebhook(
-            `💀 **${config.username}** đã bị tiêu diệt! (Thời gian đã sống: \`${uptime}\`) -> Đang chờ hồi sinh...`,
+            `💀 **${process.env.username}** đã bị tiêu diệt! (Thời gian đã sống: \`${uptime}\`) -> Đang chờ hồi sinh...`,
         );
 
         let delay = Math.floor(Math.random() * 10000);
@@ -198,7 +198,7 @@ function start_bot() {
         } catch (e) {
             reasonClean = String(reason);
         }
-        const msg = `🔴 **[BỊ KICK]** **${config.username}** đã bị đuổi khỏi server!.
+        const msg = `🔴 **[BỊ KICK]** **${process.env.username}** đã bị đuổi khỏi server!.
     💬 Lý do: \`${reasonClean}\`
     ⏱️ Tổng thời gian đã treo trước đó: \`${uptime}\``;
 
@@ -260,7 +260,7 @@ function start_bot() {
             console.log("Disconnected");
             console.log("[+] Kết Nối Lại Sau 10s");
             sendDiscordWebhook(
-                `⚠️ **${config.username}** bị mất kết nối! (Thời gian đã treo trước đó: \`${uptime}\`). Đang tiến hành kết nối lại sau 10 giây...`,
+                `⚠️ **${process.env.username}** bị mất kết nối! (Thời gian đã treo trước đó: \`${uptime}\`). Đang tiến hành kết nối lại sau 10 giây...`,
             );
         }
         startTime = null;
@@ -287,7 +287,7 @@ function exitBot() {
     console.log("[+] Bot đã chủ động thoát game.");
     const uptime = getUptimeString();
     sendDiscordWebhook(
-        `🔴 **${config.username}** đã chủ động thoát game. (Tổng thời gian đã treo: \`${uptime}\`)`,
+        `🔴 **${process.env.username}** đã chủ động thoát game. (Tổng thời gian đã treo: \`${uptime}\`)`,
     );
     startTime = null;
     const currentBot = bot;
@@ -329,9 +329,9 @@ function shard() {
     }, 1000);
 }
 function status() {
-    //console.log(`${config.username}`);
+    //console.log(`${process.env.username}`);
     const uptime = getUptimeString();
-    const statusMsg = `📈 **[BÁO CÁO THỦ CÔNG]**\nbot::${config.username} \n👤 Bot: **${config.username}**\n⏱️ Thời gian đã treo: \`${uptime}\`\n❤️ Máu hiện tại: \`${Math.round(bot.health || 20)}\`\n🍖 Thức ăn: \`${Math.round(bot.food || 20)}\``;
+    const statusMsg = `📈 **[BÁO CÁO THỦ CÔNG]**\nbot::${process.env.username} \n👤 Bot: **${process.env.username}**\n⏱️ Thời gian đã treo: \`${uptime}\`\n❤️ Máu hiện tại: \`${Math.round(bot.health || 20)}\`\n🍖 Thức ăn: \`${Math.round(bot.food || 20)}\``;
     console.log("[+] " + statusMsg.replace(/\*\*/g, ""));
     sendDiscordWebhook(statusMsg);
 }
