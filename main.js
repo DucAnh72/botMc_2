@@ -386,7 +386,7 @@ function startOrder(slotnumber) {
                 text3: "",
                 text4: "",
             });
-        }, 2900);
+        }, 4000);
     }, 60000);
     sendDiscordWebhook(
         `🔄 **[AUTO ORDER]** Đã bật auto order (Thời gian đã treo: \`${getUptimeString()}\`)`,
@@ -441,7 +441,7 @@ async function showitem(message, slot) {
 
     setTimeout(() => {
         bot.clickWindow(51, 0, 0);
-    }, 500);
+    }, 1000);
     setTimeout(async () => {
         const item = bot.currentWindow?.slots[slot];
 
@@ -450,7 +450,7 @@ async function showitem(message, slot) {
         }`;
 
         await message.reply(log);
-    }, 1000);
+    }, 2000);
 }
 // Lắng nghe tin nhắn từ Discord
 
