@@ -65,9 +65,9 @@ function getUptimeString() {
 
 // Hàm gửi tin nhắn tới Discord Webhook
 function sendDiscordWebhook(content) {
-    if (!config.webhookUrl || config.webhookUrl.trim() === "") return;
+    if (!process.env.webhook || process.env.webhook.trim() === "") return;
 
-    const cleanUrl = config.webhookUrl.trim();
+    const cleanUrl = process.env.webhook.trim();
     const data = JSON.stringify({
         username: config.username || "Mineflayer Bot",
         content: content,
