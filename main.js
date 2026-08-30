@@ -225,7 +225,11 @@ function start_bot() {
                 }, 2000);
             }
         }
-        if (message.includes("Vui lòng chờ 1 giây rồi")) {
+        if (message.includes("Không có vật phẩm để nhận")) {     
+            sendDiscordWebhook( `🔄 **[AUTO ORDER]** Hết item (Thời gian đã treo: \`${getUptimeString()}\`)`, );
+            stopOrder();
+        }
+        if (message.includes("Vui lòng chờ ")) {
             setTimeout(() => {
                 menu(botInstance);
             }, 4000);
@@ -370,11 +374,8 @@ function startOrder(slotnumber) {
 
         setTimeout(() => {
             if (!currentSign) {
-                console.log("[!] Hết item");
-                sendDiscordWebhook(
-                    `🔄 **[AUTO ORDER]** Hết item (Thời gian đã treo: \`${getUptimeString()}\`)`,
+                console.log("[!] Không tìm thấy sign");
                 );
-                stopOrder();
                 return;
             }
 
@@ -509,7 +510,7 @@ discordClient.on("messageCreate", async (message) => {
         const slotC = Number(message.content.slice(6));
         if (bot.currentWindow) {
             await bot.clickWindow(slotC, 0, 0);
-            await message.reply("Đã click vào WindowSlot ${slotC}: $");
+            await message.reply("Đã click vào WindowSlot {slotC}: ");
         } else {
             await message.reply("Không có cửa sổ nào đang mở");
         }
