@@ -375,7 +375,7 @@ function startOrder(slotnumber) {
         setTimeout(() => {
             if (!currentSign) {
                 console.log("[!] Không tìm thấy sign");
-                );
+                )};
                 return;
             }
 
@@ -510,7 +510,7 @@ discordClient.on("messageCreate", async (message) => {
         const slotC = Number(message.content.slice(6));
         if (bot.currentWindow) {
             await bot.clickWindow(slotC, 0, 0);
-            await message.reply("Đã click vào WindowSlot {slotC}: ");
+            await message.reply("Đã click vào WindowSlot ${slotC}: ");
         } else {
             await message.reply("Không có cửa sổ nào đang mở");
         }
