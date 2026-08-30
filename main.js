@@ -374,10 +374,9 @@ function startOrder(slotnumber) {
 
         setTimeout(() => {
             if (!currentSign) {
-                console.log("[!] Không tìm thấy sign")
-                };
+                console.log("[!] Không tìm thấy sign");
                 return;
-            };
+            }
 
             bot._client.write("update_sign", {
                 location: currentSign.location,
