@@ -134,6 +134,22 @@ function start_bot() {
     bot.on("spawn", () => {
         console.log("Đăng Nhập Thành Công");
 
+        try {
+            bot._client.write("settings", {
+            locale: "en_US",
+            viewDistance: 16,
+            chatFlags: 0,
+            chatColors: true,
+            skinParts: 127,
+            mainHand: 1
+            });
+             
+            console.log("[+] Requested viewDistance = 16");
+            }
+        catch (err) {
+            console.log("View distance error:", err.message);
+            }
+        
         if (!startTime) startTime = Date.now();
 
         sendDiscordWebhook(
