@@ -53,7 +53,7 @@ const CHANNEL_ID = config.Idchannel;
 // Hàm tính toán thời gian đã treo máy (Uptime)
 function getUptimeString() {
     if (!startTime) return "0 phút";
-    const diffMs = Date.no() - startTime;
+    const diffMs = Date.now() - startTime;
     const diffMins = Math.floor(diffMs / 60000);
     const diffHours = Math.floor(diffMins / 60);
 
